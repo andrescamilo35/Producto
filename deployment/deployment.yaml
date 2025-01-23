@@ -15,6 +15,7 @@ spec:
       containers:
         - name: producto-ms
           image: producto-ms:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
 

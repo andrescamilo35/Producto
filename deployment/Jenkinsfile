@@ -9,6 +9,11 @@ pipeline {
                 git url: 'https://github.com/andrescamilo35/Producto.git', branch: 'master'
             }
         }
+        stage('Preparar') {
+            steps {
+                 sh 'chmod +x ./gradlew'
+            }
+        }
         stage('Build') {
             steps {
                 sh './gradlew build'
