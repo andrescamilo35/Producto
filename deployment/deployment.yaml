@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producto-ms
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: producto-ms
+  template:
+    metadata:
+      labels:
+        app: producto-ms
+    spec:
+      containers:
+        - name: producto-ms
+          image: producto-ms:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: producto-ms-service
+spec:
+  selector:
+    app: producto-ms
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
